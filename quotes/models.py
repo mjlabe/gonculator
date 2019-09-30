@@ -41,13 +41,14 @@ class SerialNumber(models.Model):
 class Component(models.Model):
     name = models.CharField(max_length=200)
     part_number = models.CharField(max_length=200)
-    price = models.FloatField()
+    price = models.DecimalField(decimal_places=2, max_digits=10)
 
     def __str__(self):
         return self.name
 
 
 class ArmoryComponent(models.Model):
+    armory = models.ForeignKey('Armory', on_delete=models.CASCADE)
     component = models.ForeignKey(Component, on_delete=models.CASCADE)
     qty = models.IntegerField()
 
@@ -56,13 +57,13 @@ class ArmoryComponent(models.Model):
 
 
 class Armory(models.Model):
-    armory_components = models.ManyToManyField(ArmoryComponent, related_name="armory_components")
-    price = models.FloatField(blank=True, null=True)
+    quote = models.ForeignKey('Quote', on_delete=models.CASCADE)
+    price = models.DecimalField(decimal_places=2, max_digits=10, blank=True, null=True)
 
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
         price = 0
-        for component in self.armory_components.all():
+        for component in ArmoryComponent.objects.filter(armory=self.pk):
             print(component.component.price)
             print(component.qty)
             price += component.component.price * component.qty
@@ -70,7 +71,7 @@ class Armory(models.Model):
         super().save(*args, **kwargs)
 
     def __str__(self):
-        return str(self.price)
+        return '$' + str(self.price)
 
 
 class POC(models.Model):
@@ -106,7 +107,6 @@ class Quote(DateMixin):
     project = models.ForeignKey(Project, on_delete=models.CASCADE)
     nwa = models.ManyToManyField(NWA, blank=True)
     serial_number = models.ManyToManyField(SerialNumber, blank=True)
-    armorys = models.ManyToManyField(Armory, blank=True, verbose_name='Armory')
     user_manual = models.FileField(null=True, blank=True)
     user = models.ManyToManyField(User, blank=True)
     poc = models.ForeignKey(POC, on_delete=models.SET_NULL, null=True, blank=True)

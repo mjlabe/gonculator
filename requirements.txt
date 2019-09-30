@@ -10,6 +10,7 @@ django-filter==2.2.0
 django-fsm==2.6.1
 django-import-export==1.2.0
 django-material==1.5.8
+django-nested-admin==3.2.4
 django-select2==7.1.1
 django-tables2==2.1.1
 django-viewflow==1.5.6
