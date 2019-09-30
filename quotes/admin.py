@@ -50,7 +50,7 @@ class ArmoryInline(nested_admin.NestedStackedInline):
     model = Armory
     extra = 1
     inlines = [ArmoryComponentsInline]
-    readonly_fields = ['price']
+    exclude = ['price']
 
 
 @admin.register(Armory)

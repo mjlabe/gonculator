@@ -41,7 +41,7 @@ class SerialNumber(models.Model):
 class Component(models.Model):
     name = models.CharField(max_length=200)
     part_number = models.CharField(max_length=200)
-    price = models.FloatField()
+    price = models.DecimalField(decimal_places=2, max_digits=10)
 
     def __str__(self):
         return self.name
@@ -58,7 +58,7 @@ class ArmoryComponent(models.Model):
 
 class Armory(models.Model):
     quote = models.ForeignKey('Quote', on_delete=models.CASCADE)
-    price = models.FloatField(blank=True, null=True)
+    price = models.DecimalField(decimal_places=2, max_digits=10, blank=True, null=True)
 
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
@@ -71,7 +71,7 @@ class Armory(models.Model):
         super().save(*args, **kwargs)
 
     def __str__(self):
-        return str(self.price)
+        return '$' + str(self.price)
 
 
 class POC(models.Model):
