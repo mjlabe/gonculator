@@ -23,5 +23,6 @@ from quotes import views
 urlpatterns = [
     path('', views.index, name='index'),
     path('quotes/', login_required(views.QuotesDatatableView.as_view()), name='quotes'),
+    path('quotes/<q>/', views.quote, name='quote')
     # url(r'^datatable/quotes/$', login_required(views.QuotesDatatableView.as_view()), name='quotes'),
 ]

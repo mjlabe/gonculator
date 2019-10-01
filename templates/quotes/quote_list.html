@@ -6,9 +6,11 @@
 
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
 
-    <div class="pt-5">
-        {{ datatable }}
-    </div>
+    <section>
+        <div>
+            {{ datatable }}
+        </div>
+    </section>
 
 {% endblock %}
 
@@ -22,8 +24,8 @@
     <!-- Load js for initializing tables via their server-side options -->
     <script type="text/javascript" charset="utf8" src="{% static 'js/datatableview.js' %}"></script>
     <script type="text/javascript">
-    $(function(){
-        datatableview.initialize($('.datatable'));
-    });
-</script>
+        $(function () {
+            datatableview.initialize($('.datatable'));
+        });
+    </script>
 {% endblock %}
