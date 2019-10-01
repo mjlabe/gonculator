@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'quotes.apps.GoncAppConfig',
     'django_select2',
     'django_filters',
-    'django_datatables_view',
+    'datatableview',
     'djangoql',
     'actstream',
     'nested_admin',

@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block body %}
+
+    {{ datatable }}
+    {{ object_list }}
+
+{% endblock %}
+
+{% block extra_js %}
+    <script>
+        $(document).ready(function () {
+            let oTable = $('.datatable').dataTable({
+                // ...
+                "processing": true,
+                "serverSide": true,
+                "ajax": "{% url 'quotes_ordered_list_json' %}"
+            });
+            // ...
+        });
+    </script>
+{% endblock %}
