@@ -2,14 +2,57 @@
 
 {% load static %}
 
+
 {% block body %}
 
     <section>
-        <div>
-
-            {{ quote }}
-
+        <div class="container">
+            <div class="p-2 col-lg">
+                <label for="quote_number">Quote Number</label>
+                <input readonly class="form-control" type="text" value="{{ quote.quote_number }}" id="quote_number">
+            </div>
+            <div class="p-2 col-lg">
+                <label for="quote_number">Project</label>
+                <input readonly class="form-control" type="text" value="{{ quote.project }}" id="quote_number">
+            </div>
+            <div class="p-2 row">
+                <div class="col-sm">
+                    <label for="size_width">Width</label>
+                    <input readonly class="form-control" type="text" value="{{ quote.size_width }}"
+                           id="size_width">
+                </div>
+                <div class="col-sm">
+                    <label for="size_depth">Depth</label>
+                    <input readonly class="form-control" type="text" value="{{ quote.size_depth }}"
+                           id="size_depth">
+                </div>
+                <div class="col-sm">
+                    <label for="size_height">Height</label>
+                    <input readonly class="form-control" type="text" value="{{ quote.size_height }}"
+                           id="size_height">
+                </div>
+            </div>
         </div>
+
+        <div class="container">
+            {% for armory in armorys %}
+                <hr style="width: 100%">
+                <div class="p-2 col-lg">
+                    <label for="armory-{{ forloop.counter }}-price">Armory Price</label>
+                    <input readonly class="form-control" type="text" value="$ {{ armory.price }}"
+                           id="armory-{{ forloop.counter }}-price">
+                </div>
+                <div class="p-2 col-lg">
+                    <label for="armory-{{ forloop.counter }}-manual">Armory Manual</label>
+                    <input readonly class="form-control" type="text" value="{{ armory.user_manual }}"
+                           id="armory-{{ forloop.counter }}-manual">
+                </div>
+                {% for component in armory.component.all %}
+                    {{ component }}
+                {% endfor %}
+            {% endfor %}
+        </div>
+
     </section>
 
 {% endblock %}

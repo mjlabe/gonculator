@@ -49,6 +49,11 @@
                 <li class="nav-item">
                     <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
                 </li>
+                {% if request.user.is_superuser %}
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="{% url 'admin:index' %}">Admin</a>
+                </li>
+                {% endif %}
             </ul>
         </div>
     </div>

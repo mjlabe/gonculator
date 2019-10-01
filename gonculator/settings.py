@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'djangoql',
     'actstream',
     'nested_admin',
+    'crispy_forms',
     'debug_toolbar',
 ]
 
@@ -122,6 +123,9 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 
 # Static files (CSS, JavaScript, Images)

@@ -4,7 +4,8 @@ from datatableview.views import DatatableView
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse
 
-from quotes.models import Quote
+from quotes.models import Quote, Armory
+from quotes.forms import QuoteForm
 
 
 def index(request):
@@ -13,7 +14,8 @@ def index(request):
 
 def quote(request, q):
     quote_obj = get_object_or_404(Quote, quote_number=q)
-    return render(request, 'quote.html', {'quote': quote_obj})
+    armorys = Armory.objects.filter(quote=quote_obj)
+    return render(request, 'quote.html', {'quote': quote_obj, 'armorys': armorys})
 
 
 class QuoteDatatable(Datatable):
