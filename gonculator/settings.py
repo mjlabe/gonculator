@@ -40,10 +40,11 @@ INSTALLED_APPS = [
     'quotes.apps.GoncAppConfig',
     'django_select2',
     'django_filters',
-    'django_datatables_view',
+    'datatableview',
     'djangoql',
     'actstream',
     'nested_admin',
+    'crispy_forms',
     'debug_toolbar',
 ]
 
@@ -122,6 +123,9 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 
 # Static files (CSS, JavaScript, Images)

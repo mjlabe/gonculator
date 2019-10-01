@@ -59,6 +59,7 @@ class ArmoryComponent(models.Model):
 class Armory(models.Model):
     quote = models.ForeignKey('Quote', on_delete=models.CASCADE)
     price = models.DecimalField(decimal_places=2, max_digits=10, blank=True, null=True)
+    user_manual = models.FileField(null=True, blank=True)
 
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
@@ -107,11 +108,10 @@ class Quote(DateMixin):
     project = models.ForeignKey(Project, on_delete=models.CASCADE)
     nwa = models.ManyToManyField(NWA, blank=True)
     serial_number = models.ManyToManyField(SerialNumber, blank=True)
-    user_manual = models.FileField(null=True, blank=True)
     user = models.ManyToManyField(User, blank=True)
     poc = models.ForeignKey(POC, on_delete=models.SET_NULL, null=True, blank=True)
     size_width = models.FloatField(null=True, blank=True)
-    side_depth = models.FloatField(null=True, blank=True)
+    size_depth = models.FloatField(null=True, blank=True)
     size_height = models.FloatField(null=True, blank=True)
     comment = models.ManyToManyField(Comment, blank=True)
     note = models.ManyToManyField(Note, blank=True)
