@@ -4,7 +4,7 @@
 
 {% block body %}
 
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="{% static 'vendor/datatables/jquery.dataTables.min.css' %}">
 
     <section>
         <div>
@@ -15,11 +15,11 @@
 {% endblock %}
 
 {% block extra_js %}
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
-            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-            crossorigin="anonymous"></script>
+{#    <script src="https://code.jquery.com/jquery-3.3.1.min.js"#}
+{#            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="#}
+{#            crossorigin="anonymous"></script>#}
     <script type="text/javascript" charset="utf8"
-            src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+            src="{% static 'vendor/datatables/jquery.dataTables.min.js' %}"></script>
 
     <!-- Load js for initializing tables via their server-side options -->
     <script type="text/javascript" charset="utf8" src="{% static 'js/datatableview.js' %}"></script>
