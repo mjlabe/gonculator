@@ -18,7 +18,7 @@ django-tables2==2.1.1
 django-viewflow==1.5.6
 django-widget-tweaks==1.4.5
 djangoql==0.13.0
-djangorestframework==3.10.3
+djangorestframework==3.11.2
 et-xmlfile==1.0.1
 jdcal==1.4.1
 Markdown==3.1.1
